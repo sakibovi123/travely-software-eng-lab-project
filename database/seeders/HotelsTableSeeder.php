@@ -23,7 +23,7 @@ class HotelsTableSeeder extends Seeder
                 'description' => 'Description of Hotel A',
                 'image' => 'hotel_a.jpg',
                 'destination_id' => 1,
-                'price' => '200',
+                'price' => '200.0',
             ],
             [
                 'hotel_name' => 'Hotel B',

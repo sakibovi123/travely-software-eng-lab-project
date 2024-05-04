@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("description")->nullable();
             $table->string("image");
             $table->foreignIdFor(Destination::class);
-            $table->decimal("price", 3, 2);
+            $table->decimal("price", 10, 1);
         });
     }
 
