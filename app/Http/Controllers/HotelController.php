@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
+use Exception;
 use Illuminate\Http\Request;
 
 class HotelController extends Controller
@@ -9,9 +11,30 @@ class HotelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function special_offer_hotels()
     {
-        //
+        $hotels = Hotel::all();
+
+        return response()->json([
+            "success" => true,
+            "data" => $hotels
+        ], 200);
+    }
+
+    /**
+     * search by destination or date
+     */
+    public function search_by_destination_or_date(Request $request)
+    {
+        try{
+            null;
+        } catch( Exception $e )
+        {
+            return response([
+                "success"=> false,
+                "error"=> $e->getMessage()
+            ], 400);
+        }
     }
 
     /**

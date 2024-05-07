@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Destination;
+use Exception;
 use Illuminate\Http\Request;
 
 class DestinationController extends Controller
@@ -9,7 +11,27 @@ class DestinationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function get_all_destination()
+    {
+        try {
+            $destination = Destination::all();
+            // dd($destination);
+            return response()->json([
+                "success" => true,
+                "data" => $destination
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                "success" => false,
+                "error" => $e->getMessage()
+            ]);
+        }
+    }
+
+    /**
+     * Search destination
+     */
+    public function search_destination()
     {
         //
     }

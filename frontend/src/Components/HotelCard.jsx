@@ -1,23 +1,23 @@
 import React from "react";
 import img1 from "../assets/dest1.jpg";
 
-export default function HotelCard() {
+export default function HotelCard({ hotelImg, hotelTitle, hotelDesc, review }) {
     return (
         <div className="max-w-sm bg-white rounded-xl shadow">
             <a href="#">
-                <img className="rounded-t-lg" src={img1} alt="" />
+                <img className="rounded-t-lg" src={hotelImg} alt="" />
             </a>
             <div className="p-5">
                 <a href="#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                        Title here
+                        {hotelTitle}
                     </h5>
                 </a>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Lorem ipsum dolor lorem ipsum dolor
+                    {hotelDesc}
                 </p>
-                <p className="w-[20%] text-center text-white mb-3 font-normal text-gray-700 bg-blue-600 rounded-full">
-                    8.9
+                <p className="w-[20%] text-center text-white mb-3 font-normal bg-blue-600 rounded-full">
+                    {review}
                 </p>
                 <a
                     href="#"

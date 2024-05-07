@@ -24,6 +24,17 @@ return new class extends Migration
             $table->string("image");
             $table->foreignIdFor(Destination::class);
             $table->decimal("price", 10, 1);
+            // facilities
+            $table->boolean("free_wifi")->nullable();
+            $table->boolean("is_parking")->nullable();
+            $table->boolean("family_rooms")->nullable();
+            $table->boolean("provide_meals")->nullable();
+            $table->boolean("have_room_service")->nullable();
+            $table->boolean("have_ac")->nullable();
+            // bed preference
+            $table->enum("bed_preference", [
+                "Twin beds", "Double beds"
+            ])->nullable();
         });
     }
 
