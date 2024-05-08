@@ -1,21 +1,14 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:sanctum');
 
-Route::prefix("api")
-    ->controller(App\Http\Controllers\DestinationController::class)
-    ->middleware("api")
-    ->group(function ($route) {
-        $route->get("destinations", "get_all_destination");
-    });
+Route::get("destinations", [ App\Http\Controllers\DestinationController::class, "get_all_destination" ]);
+Route::get("hotels", [App\Http\Controllers\HotelController::class, "special_offer_hotels"]);
 
-Route::prefix("api")
-    ->controller(App\Http\Controllers\HotelController::class)
-    ->middleware("api")
-    ->group(function ($route) {
-        $route->get("hotels", "special_offer_hotels");
-    });
+Route::post("filter", [App\Http\Controllers\HotelController::class, "search_by_destination_or_date"]);
 
-
-// Route::get("destinations", [ DestinationController::class, "get_all_destination" ]);

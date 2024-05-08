@@ -12,4 +12,9 @@ class Destination extends Model
     protected $fillable = [
         "destination_name", "thumbnail"
     ];
+
+    public function hotels()
+    {
+        return $this->hasMany(Hotel::class);
+    }
 }

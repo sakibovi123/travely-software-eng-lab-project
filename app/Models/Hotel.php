@@ -12,4 +12,9 @@ class Hotel extends Model
     protected $fillable = [
         "hotel_name", "opening", "closing", "review", "description", "image", "destination_id", "price"
     ];
+
+    public function destinations()
+    {
+        return $this->belongsTo(Destination::class);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,21 @@ class HotelController extends Controller
     public function search_by_destination_or_date(Request $request)
     {
         try{
-            null;
+            $from_date = Carbon::parse($request->input("from_date"));
+            $to_date = Carbon::parse($request->input("to_date"));
+            $destination = $request->input("destination");
+
+            $hotels = Hotel::join("destinations", "hotels.destination_id", "=", "destinations.id")
+                ->where("destinations.destination_name", $destination)
+                ->whereDate("opening", "<=", $from_date)
+                ->whereDate("closing", ">=", $to_date)
+                ->get();
+
+            return response()->json([
+                "success" => true,
+                "data" => $hotels
+            ], 200);
+
         } catch( Exception $e )
         {
             return response([
